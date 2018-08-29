@@ -1,8 +1,11 @@
+// 2 sent  to client and renderer
 import React from 'react'
-import App from './App'
 
+import App from './App'
 import HomePage from './pages/HomePage'
 import UsersListPage from './pages/UsersListPage'
+import NotFoundPage from './pages/NotFoundPage'
+import AdminsListPage from './pages/AdminsListPage' //5c
 
 export default [
   {
@@ -15,9 +18,16 @@ export default [
         exact:true
       },
       {
+        ...AdminsListPage,
+        path: '/admins'
+      },
+      {
         path: '/users',
         ...UsersListPage
         // component: UsersListPage
+      },
+      {
+        ...NotFoundPage
       }
     ]
   }
