@@ -25,6 +25,7 @@ app.use('/api', proxy('http://react-ssr-api.herokuapp.com', {
 app.use(express.static('public'))
 
 app.get('*', (req, res) => {
+  // req path is when put on url
   const store = createStore(req)
   const promises = matchRoutes(Routes, req.path).map(
     ({ route }) => {
@@ -38,6 +39,7 @@ app.get('*', (req, res) => {
     })
 
   Promise.all(promises).then(() => {
+
     const context = {}
     const content = renderer(req, store, context)
 
